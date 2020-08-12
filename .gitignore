@@ -6,14 +6,10 @@
 /net.o
 /pkcs7.o
 /sceputils.o
-/sscep
-/sscep_static
-/sscep_dyn
 /sscep.o
 /.git_checkout
 
 .deps
-Makefile
 Makefile.in
 aclocal.m4
 autom4te.cache
