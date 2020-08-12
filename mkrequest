@@ -111,6 +111,9 @@ chmod 600 $PREFIX.key
 CONFIG=.$$client.cnf
 cat << _EOF_ > $CONFIG
 [ req ]
+# BEGIN ANSIBLE MANAGED BLOCK
+string_mask = nombstr
+# END ANSIBLE MANAGED BLOCK
 prompt = no
 distinguished_name = req_distinguished_name
 _EOF_
