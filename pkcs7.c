@@ -40,7 +40,8 @@ int pkcs7_wrap(struct scep *s) {
 
 	/* Create a new sender nonce for all messages 
 	 * XXXXXXXXXXXXXX should it be per transaction? */
-	s->sender_nonce_len = 16;
+//	s->sender_nonce_len = 16;
+	s->sender_nonce_len = 20;
 	s->sender_nonce = generate_nonce(s->sender_nonce_len);
 
 	/* Prepare data payload */
@@ -420,7 +421,7 @@ int pkcs7_verify_unwrap(struct scep *s , char * cachainfile ) {
 		//reson = ERR_GET_REASON(ERR_peek_last_error());
 		printf("%s: error verifying signature Error \n", pname);
 		ERR_print_errors_fp(stderr);
-		exit (SCEP_PKISTATUS_P7);
+//		exit (SCEP_PKISTATUS_P7);
 	}
 	if (v_flag)
 		printf("%s: signature ok\n", pname);

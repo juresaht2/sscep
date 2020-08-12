@@ -104,6 +104,14 @@ if [ ! "$UNSTRUCTURED_NAME" ]; then
 	fi
 fi
 
+if [ "$4" ]; then
+ 	DIGEST=-$4
+else
+ 	DIGEST=""
+fi
+ 
+echo "DIGEST=$DIGEST"
+
 # Generate key and request
 openssl genrsa -out $PREFIX.key $KEYBITS
 chmod 600 $PREFIX.key
