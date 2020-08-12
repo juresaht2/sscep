@@ -7,8 +7,8 @@ MANDIR = /usr/local/man/man8
 
 CC	= gcc
 #WITH_DEBUG   = -g
-OPENSSL = ../openssl
-CFLAGS	= -Wall -O $(WITH_DEBUG) -I $(OPENSSL)/include 
+OPENSSL = /usr/lib64
+CFLAGS	= -Wall -O $(WITH_DEBUG) -I $(OPENSSL)
 
 LDFLAGS = -L$(OPENSSL)
 LDLIBS = -lcrypto -lpthread
