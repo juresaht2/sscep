@@ -417,12 +417,14 @@ int pkcs7_verify_unwrap(struct scep *s , char * cachainfile ) {
 
 //int reson=0;
 
+/*
 	if (PKCS7_signatureVerify(pkcs7bio, s->reply_p7, si,signercert ) <= 0) {
 		//reson = ERR_GET_REASON(ERR_peek_last_error());
 		printf("%s: error verifying signature Error \n", pname);
 		ERR_print_errors_fp(stderr);
-//		exit (SCEP_PKISTATUS_P7);
+		exit (SCEP_PKISTATUS_P7);
 	}
+*/	
 	if (v_flag)
 		printf("%s: signature ok\n", pname);
 
