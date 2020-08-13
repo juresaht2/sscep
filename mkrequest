@@ -104,6 +104,14 @@ if [ ! "$UNSTRUCTURED_NAME" ]; then
 	fi
 fi
 
+if [ "$4" ]; then
+ 	DIGEST=-$4
+else
+ 	DIGEST=""
+fi
+ 
+echo "DIGEST=$DIGEST"
+
 # Generate key and request
 openssl genrsa -out $PREFIX.key $KEYBITS
 chmod 600 $PREFIX.key
@@ -111,6 +119,9 @@ chmod 600 $PREFIX.key
 CONFIG=.$$client.cnf
 cat << _EOF_ > $CONFIG
 [ req ]
+# BEGIN ANSIBLE MANAGED BLOCK
+string_mask = nombstr
+# END ANSIBLE MANAGED BLOCK
 prompt = no
 distinguished_name = req_distinguished_name
 _EOF_
@@ -158,7 +169,7 @@ subjectAltName=critical,email:$PARAMETER
 _EOF_
 
 # Make request
-openssl req -new -key $PREFIX.key -out $PREFIX.csr -config $CONFIG \
+openssl req -new -key $PREFIX.key $DIGEST -out $PREFIX.csr -config $CONFIG \
 	-reqexts $EXT
 
 # Make a self-signed certificate from request subject
